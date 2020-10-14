@@ -37,4 +37,30 @@ section img{
         color: $pure;
         border-color: $pure;
     }
+    outline-style: none !important;
+    box-shadow: none !important;
+}
+.order-now{
+    background-color: $primary;
+    color: $pure;
+    margin-top: 20px;
+    transition: $smooth;
+    &:hover{
+        background-color: $primary-hover;
+    }
+    outline-style: none !important;
+    box-shadow: none !important;
+}
+.cart{
+    background-color: $secondary;
+}
+.amount{
+    color: $primary;
+}
+.login{
+    background-color: $secondary;
+    min-height: 86vh;
+    a{
+        color: $primary-hover;
+    }
 }

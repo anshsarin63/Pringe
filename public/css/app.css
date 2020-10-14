@@ -36,11 +36,43 @@ section img {
   border: 2px solid #fe5f1e;
   color: #fe5f1e;
   transition: all 0.3s ease-in-out;
+  outline-style: none !important;
+  box-shadow: none !important;
 }
 
 .add-to-cart:hover {
   background-color: #fe5f1e;
   color: #fff;
   border-color: #fff;
+}
+
+.order-now {
+  background-color: #fe5f1e;
+  color: #fff;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+  outline-style: none !important;
+  box-shadow: none !important;
+}
+
+.order-now:hover {
+  background-color: #b23301;
+}
+
+.cart {
+  background-color: #f8f8f8;
+}
+
+.amount {
+  color: #fe5f1e;
+}
+
+.login {
+  background-color: #f8f8f8;
+  min-height: 86vh;
+}
+
+.login a {
+  color: #b23301;
 }
 
