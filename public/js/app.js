@@ -93,7 +93,14 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log("hello world");
+var addToCart = document.querySelectorAll(".add-to-cart"); // console.log(addToCart);
+
+addToCart.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    var pizza = JSON.parse(btn.dataset.pizza);
+    updateCart(pizza);
+  });
+});
 
 /***/ }),
 

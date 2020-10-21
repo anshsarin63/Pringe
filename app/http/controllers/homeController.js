@@ -5,7 +5,7 @@ function homeController() {
         index(req, res) {
             
             Menu.find().then(function (pizza) {
-                console.log(pizza);
+                // console.log(pizza);
                 res.render("home",{pizzas:pizza});
             })
         }
