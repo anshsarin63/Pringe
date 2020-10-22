@@ -1,5 +1,6 @@
 <section class="cart py-16">
-  <!-- <div class="empty-cart py-8">
+  <% if(!session.cartItem) { %>
+  <div class="empty-cart py-8">
     <div class="container mx-auto text-center">
       <h1 class="text-3xl text-bold mb-2">Empty Cart😔</h1>
       <p class="text-gray-500 text-lg mb-12">
@@ -13,11 +14,14 @@
       />
       <a
         href="/"
-        class="order rounded-full px-6 py-2 inline-block font-bold mt-12 mb-12"
+        class="order-now rounded-full px-6 py-2 inline-block font-bold mt-12 mb-12"
         >Order Now</a
       >
     </div>
-  </div> -->
+  </div>
+
+  <% } else { %>
+
   <div class="order container mx-auto w-1/2">
     <div class="flex items-center border-b border-gray-300 pb-4">
       <img src="/img/cart-black.png" alt="cart-black" class="w=1/4 h-8" />
@@ -25,50 +29,61 @@
     </div>
 
     <div class="pizza-list ">
+      <% for(let pizza of Object.values(session.cartItem.item)) { %>
       <div class="flex items-center my-8">
-        <img class="w-20 h-20" src="/img/pizza.png" alt="pizza" />
+        <img
+          class="w-20 h-20"
+          src="/img/<%= pizza.item.image %> "
+          alt="pizza"
+        />
         <div class="flex-1 ml-4">
-          <h1>Margeraitta</h1>
-          <span>SMALL</span>
+          <h1><%= pizza.item.name %></h1>
+          <span><%= pizza.item.size %></span>
         </div>
-        <span class="flex-1">1 Pcs</span>
-        <span class="font-bold text-lg">₹250</span>
+        <span class="flex-1"><%= pizza.qty %> Pcs</span>
+        <span class="font-bold text-lg"
+          >₹<%= pizza.item.price * pizza.qty%></span
+        >
       </div>
-      <div class="flex items-center my-8">
-        <img class="w-20 h-20" src="/img/pizza.png" alt="pizza" />
-        <div class="flex-1 ml-4">
-          <h1>Margeraitta</h1>
-          <span>SMALL</span>
-        </div>
-        <span class="flex-1">1 Pcs</span>
-        <span class="font-bold text-lg">₹250</span>
-      </div>
-      <div class="flex items-center my-8">
-        <img class="w-20 h-20" src="/img/pizza.png" alt="pizza" />
-        <div class="flex-1 ml-4">
-          <h1>Margeraitta</h1>
-          <span>SMALL</span>
-        </div>
-        <span class="flex-1">1 Pcs</span>
-        <span class="font-bold text-lg">₹250</span>
-      </div>
+      <% } %>
     </div>
-    <hr>
+
+    <hr />
     <div class="text-right py-4">
-        <div class="mb-4">
-            <span class="text-lg font-bold">Total Amount:</span>
-            <span class="amount text-2xl font-bold ml-4">₹300</span>
-        </div>
-        <div>
-            <form action="">
-                <input type="text" class="border border-gray-400 p-2 w-1/2 mb-4" placeholder="Phone Number">
-                <input type="text" class="border border-gray-400 p-2 w-1/2 mb-1" placeholder="Address">
-                <div>
-                    <button type="submit" class="order-now px-6 py-2 rounded-full font-bold">Order Now</button>
-                </div>
-            </form>
-        </div>
-        <a href="" class="inline-block cursor-pointer order-now px-6 py-2 rounded-full font-bold">Login to Continue</a>
+      <div class="mb-4">
+        <span class="text-lg font-bold">Total Amount:</span>
+        <span class="amount text-2xl font-bold ml-4"
+          >₹<%= session.cartItem.totalPrice %>
+        </span>
+      </div>
+      <div>
+        <form action="">
+          <input
+            type="text"
+            class="border border-gray-400 p-2 w-1/2 mb-4"
+            placeholder="Phone Number"
+          />
+          <input
+            type="text"
+            class="border border-gray-400 p-2 w-1/2 mb-1"
+            placeholder="Address"
+          />
+          <div>
+            <button
+              type="submit"
+              class="order-now px-6 py-2 rounded-full font-bold"
+            >
+              Order Now
+            </button>
+          </div>
+        </form>
+      </div>
+      <a
+        href="/login"
+        class="inline-block cursor-pointer order-now px-6 py-2 rounded-full font-bold"
+        >Login to Continue</a
+      >
     </div>
   </div>
+  <% } %>
 </section>

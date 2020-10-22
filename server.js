@@ -11,6 +11,9 @@ const MongoDBStore = require("connect-mongo")(session);
 
 //assets
 app.use(express.static("public"));
+app.use(express.json());
+
+
 
 //database-mongoDB
 mongoose.connect(
@@ -52,6 +55,13 @@ app.use(
 app.use(expressLayout);
 app.set("views", path.join(__dirname + "/resources/views"));
 app.set("view engine", "ejs");
+
+//global middleware
+app.use((req, res, next) => {
+  console.log(req.session.cartItem);
+  res.locals.session = req.session;
+  next();
+})
 
 //routes
 require("./routes/web")(app);
