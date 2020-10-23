@@ -15,7 +15,11 @@ app.use(express.json());
 
 
 
+
 //database-mongoDB
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
 mongoose.connect(
   "mongodb+srv://admin-ansh:anshsarin00@cluster0.2l6ki.mongodb.net/pizza",
   {
@@ -55,10 +59,11 @@ app.use(
 app.use(expressLayout);
 app.set("views", path.join(__dirname + "/resources/views"));
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 
 //global middleware
 app.use((req, res, next) => {
-  console.log(req.session.cartItem);
+  // console.log(req.session.cartItem);
   res.locals.session = req.session;
   next();
 })

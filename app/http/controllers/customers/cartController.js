@@ -27,7 +27,7 @@ function cartController() {
                 cartItem.totalQty += 1;
                 cartItem.totalPrice += req.body.price;
             }
-            console.log(req.body);
+            // console.log(req.body);
 
             res.json({ totalQty: req.session.cartItem.totalQty });
         }

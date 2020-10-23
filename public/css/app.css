@@ -337,6 +337,11 @@ section img {
   background-color: #f8f8f8;
 }
 
+.size-cart {
+  background-color: gray;
+  color: honeydew;
+}
+
 .add-to-cart {
   border: 2px solid #fe5f1e;
   color: #fe5f1e;
