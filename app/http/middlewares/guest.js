@@ -1,5 +1,5 @@
 var express = require("express");
-function isLoggedIn(res, req, next) {
+function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
       return res.redirect("/");
     }
