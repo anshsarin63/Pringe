@@ -12,9 +12,12 @@
         </h2>
         
       </div>
-      <form class="mt-8" action="#" method="POST">
+      <form action="/login" method="POST" class="mt-8">
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm">
+          <% if(messages.error){ %> 
+            <span class="text-red-500 text-sm pl-4"><%= messages.error %> </span>
+          <% } %> 
           <div>
             <input
               aria-label="Email address"

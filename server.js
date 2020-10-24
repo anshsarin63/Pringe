@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoDBStore = require("connect-mongo")(session);
+const passport = require('passport');
 
 //assets
 app.use(express.static("public"));
@@ -55,6 +56,14 @@ app.use(
   })
 );
 
+
+//passport config
+const passportInit = require('./app/config/passport');
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //set views
 app.use(expressLayout);
 app.set("views", path.join(__dirname + "/resources/views"));
@@ -65,6 +74,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   // console.log(req.session.cartItem);
   res.locals.session = req.session;
+  res.locals.user = req.user;
   next();
 })
 
