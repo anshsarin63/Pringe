@@ -2,8 +2,8 @@ const passport = require("passport");
 const User = require("../../models/user");
 function authController() {
   return {
-    login(req, res) {
-      res.render("auth/login");
+    async login(req, res) {
+      await res.render("auth/login");
     },
     register(req, res) {
       res.render("auth/register");
@@ -65,6 +65,10 @@ function authController() {
         });
       })(req, res, next);
     },
+    async logout(req, res) {
+      await req.logout();
+      return res.redirect("/login");
+    }
   };
 }
 

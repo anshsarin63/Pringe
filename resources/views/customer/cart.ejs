@@ -56,14 +56,17 @@
           >₹<%= session.cartItem.totalPrice %>
         </span>
       </div>
+      <% if(user){ %> 
       <div>
-        <form action="">
+        <form action="/order" method="POST">
           <input
+          name="phone"
             type="text"
             class="border border-gray-400 p-2 w-1/2 mb-4"
             placeholder="Phone Number"
           />
           <input
+          name="address"
             type="text"
             class="border border-gray-400 p-2 w-1/2 mb-1"
             placeholder="Address"
@@ -78,11 +81,13 @@
           </div>
         </form>
       </div>
+    <% } else {  %> 
       <a
         href="/login"
         class="inline-block cursor-pointer order-now px-6 py-2 rounded-full font-bold"
         >Login to Continue</a
       >
+    <% } %> 
     </div>
   </div>
   <% } %>
