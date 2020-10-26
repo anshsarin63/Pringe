@@ -14,6 +14,7 @@ function initRoutes(app) {
     app.post("/update-cart", cartController().update);
     app.post("/logout", authController().logout);
     app.post("/order",orderController().store)
+    app.get("/orders", orderController().index);
 }
 
 module.exports=initRoutes

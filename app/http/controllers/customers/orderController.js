@@ -1,4 +1,6 @@
 const Order = require('../../../models/order');
+const User = require('../../../models/user');
+const moment=require('moment')
 
 function orderController() {
     return {
@@ -22,6 +24,15 @@ function orderController() {
                 req.flash("error", "Something went wrong");
                 res.redirect("/cart");
             })
+        },
+        async index(req, res) {
+            const orders = await Order.find({ customerId: req.user._id });
+            // console.log(orders);
+            res.render("customer/orders", {
+              order: orders,
+              moment: moment,
+            });
+            // console.log(moment(orders.createdAt).format("h:mm A"));
         }
     }
 }
