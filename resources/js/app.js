@@ -34,3 +34,10 @@ addToCart.forEach((btn) => {
         updateCart(pizza);
     })
 })
+
+const successMessage = document.querySelector("#success-alert");
+if (successMessage) {
+    setTimeout(()=>{
+        successMessage.remove();
+  },2000);
+}

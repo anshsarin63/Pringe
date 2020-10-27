@@ -5293,6 +5293,13 @@ addToCart.forEach(function (btn) {
     updateCart(pizza);
   });
 });
+var successMessage = document.querySelector("#success-alert");
+
+if (successMessage) {
+  setTimeout(function () {
+    successMessage.remove();
+  }, 2000);
+}
 
 /***/ }),
 

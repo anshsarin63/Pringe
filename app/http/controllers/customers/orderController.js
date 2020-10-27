@@ -19,14 +19,15 @@ function orderController() {
             })
             order.save().then(result => {
                 req.flash('success', 'Order Placed Successfully');
-                res.redirect('/');
+                delete req.session.cartItem;
+                res.redirect('/orders');
             }).catch(err => {
                 req.flash("error", "Something went wrong");
                 res.redirect("/cart");
             })
         },
         async index(req, res) {
-            const orders = await Order.find({ customerId: req.user._id });
+            const orders = await Order.find({ customerId: req.user._id }, null, { sort:{ createdAt: -1 }});
             // console.log(orders);
             res.render("customer/orders", {
               order: orders,
