@@ -35,9 +35,14 @@ addToCart.forEach((btn) => {
     })
 })
 
+//success message 
 const successMessage = document.querySelector("#success-alert");
 if (successMessage) {
     setTimeout(()=>{
         successMessage.remove();
   },2000);
 }
+
+//admin config
+const initAdmin = require('./admin');
+initAdmin();

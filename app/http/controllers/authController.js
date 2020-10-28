@@ -61,7 +61,8 @@ function authController() {
             req.flash("error", info.message);
             return next(err);
           }
-          return res.redirect("/");
+          if (req.user.role === 'customer') return res.redirect("/");
+          else return res.redirect("/admin");
         });
       })(req, res, next);
     },

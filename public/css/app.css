@@ -399,3 +399,8 @@ section img {
   color: #b23301;
 }
 
+.orders {
+  background-color: #f8f8f8;
+  min-height: 540px;
+}
+
