@@ -34,6 +34,13 @@ function orderController() {
               moment: moment,
             });
             // console.log(moment(orders.createdAt).format("h:mm A"));
+        },
+        async show(req, res) {
+            const order = await Order.findById(req.params.id);
+            if (req.user._id.toString() === order.customerId.toString()) {
+                res.render("customer/singleOrder", { order: order });
+            }
+            else res.redirect('/');
         }
     }
 }
