@@ -1,5 +1,7 @@
 const axios = require("axios").default;
 const moment = require('moment');
+const socket = io();
+const Noty = require('noty');
 
 function initAdmin() {
     const orderTableBody = document.querySelector("#orderTableBody");
@@ -89,9 +91,21 @@ function initAdmin() {
                 </td>
             </tr>
         `
-        })
-        .join("");
+        }).join("");
     }
+  socket.on('orderPlaced', (data) => {
+    new Noty({
+      // theme: "relax",
+      type: "success",
+      text: "New Order",
+      timeout: 1000,
+      progressBar: false,
+    }).show();
+    console.log(data);
+    orders.unshift(data);
+    orderTableBody.innerHTML = '';
+    orderTableBody.innerHTML = generateMarkup(orders);
+  })
 }
 
 

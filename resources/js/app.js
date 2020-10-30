@@ -3,6 +3,7 @@ let axios = require('axios').default;
 // const session = require('express-session');
 const Noty = require("noty");
 let cartController = document.querySelector("#cart-controller");
+const moment = require('moment');
 // console.log(addToCart);
 
 
@@ -46,3 +47,59 @@ if (successMessage) {
 //admin config
 const initAdmin = require('./admin');
 initAdmin();
+
+//dynamic update of single order
+let order = document.querySelector("#hiddenInput");
+order = JSON.parse(order.value);
+const statuses = document.querySelectorAll(".status-line");
+let time = document.createElement("small");
+
+function updateStatus(order) {
+    statuses.forEach((status) => {
+        status.classList.remove("current");
+        status.classList.remove("step-completed");
+    })
+    let statusCompleted = true;
+    statuses.forEach((status) => {
+        let dataProp=status.dataset.status;
+        if(statusCompleted) {
+            status.classList.add("step-completed");
+        }
+        if (dataProp === order.status) {
+            time.innerHTML = moment(order.updatedAt).format("hh:mm A");
+            status.appendChild(time);
+            status.nextElementSibling.classList.add("current");
+            statusCompleted = false;
+        }
+    })
+}
+
+updateStatus(order);
+
+
+//socket connection
+const socket = io();
+if (order) {
+    socket.emit('join', `order_${order._id}`);
+}
+
+let adminAreaPath = window.location.pathname;
+console.log(adminAreaPath);
+if (adminAreaPath.includes('admin')) {
+    socket.emit('join', 'adminRoom');
+}
+
+socket.on('orderUpdated', (data) => {
+    let updatedOrder = { ...order };
+    updatedOrder.updatedAt = moment().format();
+    updatedOrder.status = data.status;
+    console.log(data);
+    updateStatus(updatedOrder);
+    new Noty({
+      // theme: "relax",
+      type: "success",
+      text: "Status Updated",
+      timeout: 1000,
+      progressBar: false,
+    }).show();
+})

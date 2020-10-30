@@ -501,3 +501,17 @@ section img {
   background-color: #ccc;
 }
 
+.status-box ul li.current {
+  color: #fe5f1e;
+}
+
+.status-box ul li.current span:after {
+  background-color: #fe5f1e;
+}
+
+.status-box ul li small {
+  color: black;
+  float: right;
+  margin-bottom: 8px;
+}
+

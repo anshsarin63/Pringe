@@ -179,3 +179,18 @@ section img{
 .status-box ul li.step-completed:before{
      background-color: $gray;
 }
+
+//current class
+.status-box ul li.current{
+    color: $primary;
+}
+.status-box ul li.current span:after{
+    background-color: $primary;
+}
+
+.status-box ul li small{
+    color: black;
+    float: right;
+    margin-bottom: 8px;
+}
+
