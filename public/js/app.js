@@ -26864,11 +26864,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["d
 
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
-var socket = io();
-
 var Noty = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 
-function initAdmin() {
+function initAdmin(socket) {
   var orderTableBody = document.querySelector("#orderTableBody");
   var orders = [];
   var markup;
@@ -26904,8 +26902,8 @@ function initAdmin() {
       text: "New Order",
       timeout: 1000,
       progressBar: false
-    }).show();
-    console.log(data);
+    }).show(); // console.log(data);
+
     orders.unshift(data);
     orderTableBody.innerHTML = '';
     orderTableBody.innerHTML = generateMarkup(orders);
@@ -26979,12 +26977,11 @@ if (successMessage) {
 } //admin config
 
 
-var initAdmin = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+var initAdmin = __webpack_require__(/*! ./admin */ "./resources/js/admin.js"); //dynamic update of single order
 
-initAdmin(); //dynamic update of single order
 
 var order = document.querySelector("#hiddenInput");
-order = JSON.parse(order.value);
+order = order ? JSON.parse(order.value) : null;
 var statuses = document.querySelectorAll(".status-line");
 var time = document.createElement("small");
 
@@ -27013,13 +27010,13 @@ function updateStatus(order) {
 updateStatus(order); //socket connection
 
 var socket = io();
+initAdmin(socket);
 
 if (order) {
   socket.emit('join', "order_".concat(order._id));
 }
 
-var adminAreaPath = window.location.pathname;
-console.log(adminAreaPath);
+var adminAreaPath = window.location.pathname; // console.log(adminAreaPath);
 
 if (adminAreaPath.includes('admin')) {
   socket.emit('join', 'adminRoom');

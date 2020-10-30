@@ -1,9 +1,8 @@
 const axios = require("axios").default;
 const moment = require('moment');
-const socket = io();
 const Noty = require('noty');
 
-function initAdmin() {
+function initAdmin(socket) {
     const orderTableBody = document.querySelector("#orderTableBody");
     let orders = [];
     let markup;
@@ -101,7 +100,7 @@ function initAdmin() {
       timeout: 1000,
       progressBar: false,
     }).show();
-    console.log(data);
+    // console.log(data);
     orders.unshift(data);
     orderTableBody.innerHTML = '';
     orderTableBody.innerHTML = generateMarkup(orders);

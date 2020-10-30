@@ -46,11 +46,11 @@ if (successMessage) {
 
 //admin config
 const initAdmin = require('./admin');
-initAdmin();
+
 
 //dynamic update of single order
 let order = document.querySelector("#hiddenInput");
-order = JSON.parse(order.value);
+order = (order)?JSON.parse(order.value):null;
 const statuses = document.querySelectorAll(".status-line");
 let time = document.createElement("small");
 
@@ -79,12 +79,13 @@ updateStatus(order);
 
 //socket connection
 const socket = io();
+initAdmin(socket);
 if (order) {
     socket.emit('join', `order_${order._id}`);
 }
 
 let adminAreaPath = window.location.pathname;
-console.log(adminAreaPath);
+// console.log(adminAreaPath);
 if (adminAreaPath.includes('admin')) {
     socket.emit('join', 'adminRoom');
 }
