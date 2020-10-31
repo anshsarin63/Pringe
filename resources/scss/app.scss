@@ -24,9 +24,9 @@ nav li a:hover{
 .hero{
     background: $secondary;
 }
-section img{
-    height: 30rem;
-}
+// section img{
+//     height: 30rem;
+// }
 
 .size{
     background-color: $secondary;
@@ -192,5 +192,16 @@ section img{
     color: black;
     float: right;
     margin-bottom: 8px;
+}
+
+@media(max-width:1060px){
+    .container{
+        max-width: 90%;
+    }
+    table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
 

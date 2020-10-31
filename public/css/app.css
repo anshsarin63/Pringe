@@ -331,10 +331,6 @@ nav li a:hover {
   background: #f8f8f8;
 }
 
-section img {
-  height: 30rem;
-}
-
 .size {
   background-color: #f8f8f8;
 }
@@ -513,5 +509,17 @@ section img {
   color: black;
   float: right;
   margin-bottom: 8px;
+}
+
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 

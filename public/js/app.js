@@ -27010,7 +27010,6 @@ function updateStatus(order) {
 updateStatus(order); //socket connection
 
 var socket = io();
-initAdmin(socket);
 
 if (order) {
   socket.emit('join', "order_".concat(order._id));
@@ -27019,6 +27018,7 @@ if (order) {
 var adminAreaPath = window.location.pathname; // console.log(adminAreaPath);
 
 if (adminAreaPath.includes('admin')) {
+  initAdmin(socket);
   socket.emit('join', 'adminRoom');
 }
 
