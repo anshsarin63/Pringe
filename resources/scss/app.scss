@@ -8,6 +8,9 @@ body{
     color: dark;
     // height: 2000px;
 }
+.container{
+    width: 95%;
+}
 nav li:last-child a{
     &:hover{
         background-color: $primary-hover;

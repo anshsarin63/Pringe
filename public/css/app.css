@@ -311,6 +311,10 @@ body {
   color: dark;
 }
 
+.container {
+  width: 95%;
+}
+
 nav li:last-child a {
   background-color: #fe5f1e;
 }

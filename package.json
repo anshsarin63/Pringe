@@ -30,7 +30,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "laravel-mix": "^5.0.6",
+    "laravel-mix": "^5.0.7",
     "nodemon": "^2.0.4",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.27.0",
