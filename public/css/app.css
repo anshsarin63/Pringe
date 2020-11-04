@@ -401,6 +401,10 @@ nav li a:hover {
   color: #b23301;
 }
 
+.order {
+  width: 50%;
+}
+
 .orders {
   background-color: #f8f8f8;
   min-height: 86vh;
