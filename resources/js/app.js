@@ -1,9 +1,9 @@
 let addToCart = document.querySelectorAll(".add-to-cart");
 let axios = require('axios').default;
-// const session = require('express-session');
 const Noty = require("noty");
 let cartController = document.querySelector("#cart-controller");
 const moment = require('moment');
+// const session = require('express-session');
 // console.log(addToCart);
 
 
