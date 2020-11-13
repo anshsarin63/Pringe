@@ -1,7 +1,7 @@
 {
-  "name": "pizza",
+  "name": "pringe",
   "version": "1.0.0",
-  "description": "This is a pizza ordering app",
+  "description": "This is a one stop fashion webpage",
   "main": "index.js",
   "author": "Ansh Sarin",
   "scripts": {
