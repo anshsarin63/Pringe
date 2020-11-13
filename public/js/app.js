@@ -26929,14 +26929,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var addToCart = document.querySelectorAll(".add-to-cart");
 
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"]; // const session = require('express-session');
-
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var Noty = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 
 var cartController = document.querySelector("#cart-controller");
 
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // console.log(addToCart);
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // const session = require('express-session');
+// console.log(addToCart);
 
 
 function updateCart(pizza) {
